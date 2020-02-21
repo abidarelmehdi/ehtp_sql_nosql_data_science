@@ -1,5 +1,6 @@
 from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class Index(TemplateView):
-    template_name = 'base.html'
+class Index(LoginRequiredMixin, TemplateView):
+    template_name = 'ehtp/index.html'

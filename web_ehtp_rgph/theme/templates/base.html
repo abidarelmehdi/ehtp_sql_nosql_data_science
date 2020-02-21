@@ -6,19 +6,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Master EHTP</title>
+  <title>
+    {% block title %}{% endblock %}
+  </title>
   <link rel="stylesheet" href="{% static "css/styles.min.css" %}">
+  {% block header %}{% endblock %}
 </head>
 
-<body class="bg-grey-lightest font-serif leading-normal tracking-normal">
+<body class="bg-grey-lightest">
 
-<div class="container mx-auto">
-  <h1 class="text-5xl">EHTP Master</h1>
-  <h2 class="text-3xl text-gray-600">Project For SQL and NoSQL module</h2>
+  <div class="container mx-auto font-serif leading-normal tracking-normal">
+    <div class="flex items-center justify-center">
+      <div class="flex-1">
+        <h1 class="text-5xl text-gray-800">EHTP Master</h1>
+          <h2 class="text-3xl text-gray-600">Project For SQL and NoSQL module</h2>
+          <p class="text-md text-gray-600">
+          You can find the source code with data
+          <a target="_blank" href="https://github.com/abidar95/ehtp_sql_nosql_data_science"
+            class="bg-gray-200 text-gray-700 hover:bg-blue-300 px-1">
+            Here
+          </a>
+        </p>
+      </div>
+      {% if user.is_authenticated %}
+        <div class="flex-1 text-right">
+          <a href="{% url 'logout' %}" class="rounded-md px-5 py-3 border-2 border-gray-300 bg-white hover:bg-gray-200 text-gray-800 shadow-md">
+            Logout 🖐
+          </a>
+        </div>
+      {% endif %}
+    </div>
+    {% block body %}{% endblock %}
+  </div>
 
-</div>
-
-
+  {% block footer_scripts %}{% endblock %}
 </body>
 
 </html>

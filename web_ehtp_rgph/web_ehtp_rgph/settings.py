@@ -20,12 +20,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'tailwind',
+    'widget_tweaks',
     'theme',
     'ehtp'
 ]
 
 TAILWIND_APP_NAME = 'theme'
 NPM_BIN_PATH = r'C:\Program Files\nodejs\npm.cmd'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -42,7 +47,7 @@ ROOT_URLCONF = 'web_ehtp_rgph.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

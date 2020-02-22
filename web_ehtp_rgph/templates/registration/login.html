@@ -13,24 +13,17 @@
 			<form method="post" class="px-8 pt-6 pb-8 mb-4 bg-white rounded">
 				{% csrf_token %}
 				<div class="mb-4">
-					<label class="block mb-2 text-sm text-gray-700" for="username">
-						Username
-					</label>
-					{% with WIDGET_ERROR_CLASS='my_error' %}
-					{% render_field form.username class="focus:border-blue-500 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none" placeholder="Username"%}
-					{% endwith %}
+					{% include 'ehtp/render_field.html' with field=form.username %}
 				</div>
 				<div class="mb-4">
-					<label class="block mb-2 text-sm text-gray-700" for="password">
-						Password
-					</label>
-					{% with WIDGET_ERROR_CLASS='my_error' %}
-					{% render_field form.password class="focus:border-blue-500 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none" placeholder="******************"%}
-					{% endwith %}
+					{% include 'ehtp/render_field.html' with field=form.password %}
+				</div>
+				<div class="mb-4">
+					{% include 'ehtp/render_form_errors.html' with form=form %}
 				</div>
 				<div class="mb-6 text-center">
 					<button
-						class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+						class="w-full px-4 py-2 font-bold text-white bg-blue-400 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
 						type="submit">
 						Sign In
 					</button>
@@ -38,7 +31,7 @@
 				<hr class="mb-2 border-t" />
 				<p class="text-sm text-gray-600 mt-6">
 					You can use this account or
-					<a href="" class="text-blue-700 underline">create your
+					<a href="{% url 'ehtp:signup' %}" class="text-blue-700 underline">create your
 						own</a>,
 					feel free !
 				</p>
@@ -60,7 +53,7 @@
 							</td>
 							<td class="px-2 py-1 border-2 border-gray-200 bg-white text-sm">
 								<p class="text-gray-900 whitespace-no-wrap">
-									ehtp
+									ehtp2019
 								</p>
 							</td>
 						</tr>

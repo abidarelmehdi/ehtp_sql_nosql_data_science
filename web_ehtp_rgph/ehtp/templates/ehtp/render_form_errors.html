@@ -1,0 +1,9 @@
+{% with form.non_field_errors as form_errors %}
+{% if form_errors %}
+<ul class="list-disc list-inside text-sm text-red-500">
+	{% for form_error in form.non_field_errors %}
+	<li>{{ form_error }}</li>
+	{% endfor %}
+</ul>
+{% endif %}
+{% endwith %}

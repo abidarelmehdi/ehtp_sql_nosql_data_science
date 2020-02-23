@@ -1,0 +1,33 @@
+# docker-compose.yaml
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./requirements/docker/Dockerfile.app
+    image: app
+    hostname: app
+    container_name: app
+    command: gunicorn web_ehtp_rgph.wsgi -b 0.0.0.0:8000
+    volumes:
+      - static-files:/static/
+    expose:
+      - "8000"
+    restart: always
+  
+  nginx:
+    build:
+      context: .
+      dockerfile: ./requirements/docker/Dockerfile.nginx
+    image: nginx
+    hostname: nginx
+    container_name: nginx
+    volumes:
+      - static-files:/static/
+    ports:
+      - 80:80
+    links:
+      - app
+
+volumes:
+  static-files:

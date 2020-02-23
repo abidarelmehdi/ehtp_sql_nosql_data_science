@@ -25,8 +25,6 @@ class SignUp(generic.CreateView):
 
 def get_ip_info(request):
     client_ip, is_routable = get_client_ip(request)
-    is_routable = True
-    client_ip = '105.72.112.39'
     data = {
         'ip': client_ip,
         'status': 405

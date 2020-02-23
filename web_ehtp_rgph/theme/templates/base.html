@@ -17,13 +17,14 @@
 		{% block title %}{% endblock %}
 	</title>
 	<link rel="stylesheet" href="{% static 'css/styles.min.css' %}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	{% block header %}{% endblock %}
 </head>
 
 <body class="bg-grey-lightest">
 
-	<div class="container mx-auto font-serif leading-normal tracking-normal">
-		<div class="flex items-center justify-center mt-6">
+	<div class="container mx-auto px-8 py-12 lg:px-16 font-serif leading-normal tracking-normal">
+		<div class="flex items-center justify-center">
 			<div class="flex-1">
 				<a href="{% url 'ehtp:index' %}">
 					<h1 class="inline-block text-3xl text-gray-800">EHTP Master | </h1>

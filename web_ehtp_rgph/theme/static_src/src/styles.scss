@@ -1,3 +1,22 @@
+#spinner-wrapper {
+  background-color: rgba(222, 189, 135, 0.4);
+}
+#spinner-object {
+  display: block;
+  width: 2em;
+  height: 2em;
+  border: 2px solid currentColor;
+  border-radius: 9999px;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  animation: spinAround 500ms infinite linear;
+}
+
+@keyframes spinAround {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

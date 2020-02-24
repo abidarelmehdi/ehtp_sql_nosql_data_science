@@ -8,7 +8,7 @@ __pycache__/
 
 # C extensions
 *.so
-**/*.mmdb
+# **/*.mmdb
 
 # Distribution / packaging
 .Python

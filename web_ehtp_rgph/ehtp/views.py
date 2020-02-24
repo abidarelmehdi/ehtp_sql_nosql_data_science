@@ -45,5 +45,5 @@ def get_ip_info(request):
         except AddressNotFoundError:
             data.update({'status': 404})
 
-    sleep(5)
+    sleep(2)
     return JsonResponse(data)

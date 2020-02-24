@@ -1,12 +1,12 @@
 import os
-
+import django_heroku
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'wb35z)urc@*oh$p^(=svjn7sgf%b7gf8vgc@%*9exwpj8z+4iu'
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = '*'
+ALLOWED_HOSTS = ['*']
 
 
 INSTALLED_APPS = [
@@ -26,7 +26,7 @@ INSTALLED_APPS = [
 TAILWIND_APP_NAME = 'theme'
 NPM_BIN_PATH = r'C:\Program Files\nodejs\npm.cmd'
 MAXMIND_DB_FILE = os.path.join(BASE_DIR, 'maxmind_database/GeoLite2-City.mmdb')
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
@@ -40,6 +40,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'web_ehtp_rgph.urls'
@@ -98,5 +99,8 @@ USE_L10N = True
 USE_TZ = True
 
 
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 STATIC_URL = '/static/'
+
+django_heroku.settings(locals())

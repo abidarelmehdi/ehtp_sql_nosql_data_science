@@ -1,12 +1,19 @@
 import os
 import django_heroku
+import dj_database_url
+import dotenv
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'wb35z)urc@*oh$p^(=svjn7sgf%b7gf8vgc@%*9exwpj8z+4iu'
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
+
+dotenv_file = os.path.join(BASE_DIR, ".env")
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
 
 
 INSTALLED_APPS = [
@@ -64,12 +71,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'web_ehtp_rgph.wsgi.application'
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -104,3 +107,4 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 STATIC_URL = '/static/'
 
 django_heroku.settings(locals())
+del DATABASES['default']['OPTIONS']['sslmode']

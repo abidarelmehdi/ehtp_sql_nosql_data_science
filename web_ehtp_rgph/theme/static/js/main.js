@@ -28,7 +28,6 @@ $(document).ready(function () {
 			spinner_wrapper.addClass("hidden");
 		},
 		error: function (data) {
-			console.log(data);
 			spinner_wrapper.find("#spinner-message").text(
 				'Sorry we cannot retieve your localisation! Server error. !'
 			);

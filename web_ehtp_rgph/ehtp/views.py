@@ -25,6 +25,8 @@ class SignUp(generic.CreateView):
 
 def get_ip_info(request):
     client_ip, is_routable = get_client_ip(request)
+    client_ip = '105.72.112.120'
+    is_routable = True
     data = {
         'ip': client_ip,
         'status': 405
@@ -45,5 +47,5 @@ def get_ip_info(request):
         except AddressNotFoundError:
             data.update({'status': 404})
 
-    sleep(2)
+    sleep(1)
     return JsonResponse(data)
